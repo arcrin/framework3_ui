@@ -34,7 +34,7 @@ function App() {
 
   const handleConfirmPrompt = (value) => {
     if (ws.readyState === ws.OPEN){
-      ws.send({type: "ui-response", value});
+      ws.send(JSON.stringify({type: "ui-response", value}));
     }
     setIsPromptOpen(false);
   };
@@ -45,7 +45,7 @@ function App() {
 
   const loadTC = () => {
     if (ws.readyState === ws.OPEN) {
-      ws.send({type: "command", value: "loadTC"});
+      ws.send(JSON.stringify({type: "command", value: "loadTC"}));
     }
   };
   return (

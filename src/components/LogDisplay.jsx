@@ -14,7 +14,7 @@ function LogDisplay() {
     const handleMessage = (event) => {
       const data = JSON.parse(event.data);
       if (data.type == "log") {
-        setLogs((prevLogs) => [...prevLogs, event.data]);
+        setLogs((prevLogs) => [...prevLogs, data.message]);
       }
     };
 
