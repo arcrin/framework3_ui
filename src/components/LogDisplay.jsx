@@ -3,9 +3,8 @@ import WebSocketContext from "../store/ws-context";
 import "../style/LogDisplay.css";
 
 function LogDisplay() {
-  const {ws, _} = useContext(WebSocketContext);
+  const { ws, _ } = useContext(WebSocketContext);
   const [logs, setLogs] = useState([]);
-  const logDisplayRef = useRef();
 
   useEffect(() => {
     if (!ws) {
@@ -13,12 +12,10 @@ function LogDisplay() {
     }
 
     const handleMessage = (event) => {
-      // const message = JSON.parse(event.data);
-
-      // if (message.type === 'log') {
-      //     setLogs((prevLogs) => [...prevLogs, message.data]);
-      // }
-      setLogs((prevLogs) => [...prevLogs, event.data]);
+      const data = JSON.parse(event.data);
+      if (data.type == "log") {
+        setLogs((prevLogs) => [...prevLogs, event.data]);
+      }
     };
 
     ws.addEventListener("message", handleMessage);
