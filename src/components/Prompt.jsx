@@ -5,12 +5,12 @@ function Prompt({ isOpen, onConfirm, onCancel }) {
   const [value, setValue] = useState('');
   const inputRef = useRef();
 
-  useEffect(() => {
-    if (isOpen) {
-      setValue('');
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     setValue('');
+  //     inputRef.current.focus();
+  //   }
+  // }, [isOpen]);
 
   const handleConfirm = () => {
     onConfirm(value);
@@ -20,16 +20,20 @@ function Prompt({ isOpen, onConfirm, onCancel }) {
     onCancel();
   };
 
-  if (!isOpen) {
+  if (!isOpen){
     return null;
   }
-
+  
   return (
-    <div className="prompt">
-      <div className="prompt-window">
+    <div className={`prompt ${isOpen ? 'show' : ''}`}>
+      <div className={`prompt-window ${isOpen ? 'show' : ''}`}>
+        <label>Enter your input:</label>
         <input ref={inputRef} value={value} onChange={e => setValue(e.target.value)} />
-        <button onClick={handleConfirm}>OK</button>
-        <button onClick={handleCancel}>Cancel</button>
+        <div className="button-container">
+          <button onClick={handleConfirm}>OK</button>
+          {/* TODO: need to handle user input cancel */}
+          <button onClick={handleCancel}>Cancel</button>
+        </div>
       </div>
     </div>
   );

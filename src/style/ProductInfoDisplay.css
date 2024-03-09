@@ -1,0 +1,18 @@
+.product-info-display {}
+
+.product {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product th,
+.product td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.product tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.subassembly {}

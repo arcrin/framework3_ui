@@ -3,3 +3,9 @@
   top: 0;
   left: 0;
 }
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
