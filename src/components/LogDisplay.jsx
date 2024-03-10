@@ -26,11 +26,6 @@ function LogDisplay() {
   }, [ws]);
 
   return (
-    // <pre className="log-display">
-    //   {logs.map((log, index) => (
-    //     <div key={index}>{log}</div>
-    //   ))}
-    // </pre>
     <textarea readOnly value={logs.join('\n')} className="log-display"/>
   );
 }

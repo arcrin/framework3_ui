@@ -5,9 +5,7 @@ import LogDisplay from "./components/LogDisplay";
 import Prompt from "./components/Prompt";
 import ButtonGroup from "./components/ButtonGroup";
 import ProductInfoDisplay from "./components/ProductInfoDisplay";
-import { dummyProducts, files, nodes } from "../dummy_data";
-import { TreeTable } from "primereact/treetable";
-import { Column } from "primereact/column";
+import { dummy_products } from "../dummy_data";
 
 function App() {
   const { ws, connectWebSocket } = useContext(WebSocketContext);
@@ -53,26 +51,22 @@ function App() {
     setIsPromptOpen(!isPromptOpen);
   };
   return (
-    // <div className="app">
-    //   <LogDisplay />
-    //   <ButtonGroup
-    //     onStart={startButtonHandler}
-    //     onConnect={connectWebSocket}
-    //     onOpenPrompt={openPromptButtonClickHandler}/>
-    //   <ProductInfoDisplay products={dummyProducts} />
-    //   <Prompt
-    //     isOpen={isPromptOpen}
-    //     onConfirm={handleConfirmPrompt}
-    //     onCancel={handleCancelPrompt}
-    //   />
-    // </div>
-
-    <div>
-      <TreeTable value={nodes}>
-        <Column field="name" header="Name"></Column>
-        <Column field="size" header="Size"></Column>
-        <Column field="type" header="Type"></Column>
-      </TreeTable>
+    <div className="app">
+      <div className="display-container">
+        <LogDisplay />
+        {/* <div className="spacer"></div> */}
+        <ProductInfoDisplay products={dummy_products} />
+      </div>
+      <ButtonGroup
+        onStart={startButtonHandler}
+        onConnect={connectWebSocket}
+        onOpenPrompt={openPromptButtonClickHandler}
+      />
+      <Prompt
+        isOpen={isPromptOpen}
+        onConfirm={handleConfirmPrompt}
+        onCancel={handleCancelPrompt}
+      />
     </div>
   );
 }

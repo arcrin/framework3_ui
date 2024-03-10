@@ -1,18 +1,23 @@
-.product-info-display {}
+.product-info-display-container {
+    overflow-x: auto; /* Adds horizontal scrollbar when needed */
+    max-width: 100%; /* Ensures the container does not exceed the parent width */
+  }
+  
 
-.product {
-    width: 100%;
-    border-collapse: collapse;
+.product-display-table {
+    height: 300px;
+    min-width: 600px;
+    overflow: auto;
 }
 
-.product th,
-.product td {
-    border: 1px solid #ccc;
-    padding: 10px;
+.product-display-table .p-treetable-tbody td {
+    text-align: left;
+    width: 50px;
+    height: 1ch;
 }
 
-.product tr:nth-child(even) {
-    background-color: #f2f2f2;
+.product-display-table .p-treetable-thead th {
+    text-align: left;
+    width: 50px;
+    height: 10px;
 }
-
-.subassembly {}

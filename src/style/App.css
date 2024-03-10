@@ -4,8 +4,16 @@
   left: 0;
 }
 
-.app-container{
+.display-container {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: row;
+  width: 100%;
+}
+
+.display-container>* {
+  flex: 1;
+}
+
+.spacer {
+  width: 1px;
 }
