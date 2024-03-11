@@ -5,7 +5,7 @@ function ButtonGroup({ onStart, onConnect, onOpenPrompt }) {
     <div>
       <button onClick={onStart}>Load Test Case</button>
       <button onClick={onConnect}>Connect</button>
-      <button onClick={onOpenPrompt}>Open Prompt</button>
+      {/* <button onClick={onOpenPrompt}>Open Prompt</button> */}
     </div>
   );
 }

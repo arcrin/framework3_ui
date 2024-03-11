@@ -6,7 +6,10 @@ import "../style/ProductInfoDisplay.css";
 function ProductInfoDisplay({ products }) {
   return (
     <div className="product-info-display-container">
-      <TreeTable value={products} className="product-display-table">
+      <TreeTable
+        value={products}
+        className="product-display-table product-display-font-size"
+      >
         <Column field="serialNumber" header="Serial Number" expander></Column>
         <Column field="revision" header="Revision"></Column>
         <Column field="description" header="Description"></Column>

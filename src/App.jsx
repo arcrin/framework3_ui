@@ -4,8 +4,12 @@ import "./style/App.css";
 import LogDisplay from "./components/LogDisplay";
 import Prompt from "./components/Prompt";
 import ButtonGroup from "./components/ButtonGroup";
-import ProductInfoDisplay from "./components/ProductInfoDisplay";
+import ProductInfoDisplay from "./components/ProductDisplay";
+import TestDisplay from "./components/TestDisplay";
 import { dummy_products } from "../dummy_data";
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css'
 
 function App() {
   const { ws, connectWebSocket } = useContext(WebSocketContext);
@@ -47,9 +51,8 @@ function App() {
     }
   };
 
-  const openPromptButtonClickHandler = () => {
-    setIsPromptOpen(!isPromptOpen);
-  };
+
+  
   return (
     <div className="app">
       <div className="display-container">
@@ -60,14 +63,15 @@ function App() {
       <ButtonGroup
         onStart={startButtonHandler}
         onConnect={connectWebSocket}
-        onOpenPrompt={openPromptButtonClickHandler}
       />
+      <TestDisplay />
       <Prompt
         isOpen={isPromptOpen}
         onConfirm={handleConfirmPrompt}
         onCancel={handleCancelPrompt}
       />
     </div>
+
   );
 }
 

@@ -6,7 +6,7 @@
 
 .product-display-table {
     height: 300px;
-    min-width: 600px;
+    min-width: 800px;
     overflow: auto;
 }
 
@@ -20,4 +20,8 @@
     text-align: left;
     width: 50px;
     height: 10px;
+}
+
+.product-display-font-size {
+    font-size: 15px;
 }
