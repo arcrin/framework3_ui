@@ -1,6 +1,6 @@
-import React from "react";
+import {React, createContext} from "react";
 
-const WebSocketContext = React.createContext({
+const WebSocketContext = createContext({
   ws: null,
   connectWebSocket: () => {},
 });
