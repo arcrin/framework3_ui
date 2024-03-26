@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useID } from "react";
 import WebSocketContext from "./store/ws-context";
+import { TestDisplayProvider } from "./store/test-display-context-provider";
 import "./style/App.css";
 import LogDisplay from "./components/LogDisplay";
 import Prompt from "./components/Prompt";
@@ -64,7 +65,9 @@ function App() {
         onStart={startButtonHandler}
         onConnect={connectWebSocket}
       />
-      <TestDisplay />
+      <TestDisplayProvider>
+        <TestDisplay/>
+      </TestDisplayProvider>
       <Prompt
         isOpen={isPromptOpen}
         onConfirm={handleConfirmPrompt}

@@ -36871,6 +36871,1816 @@
           }
         }
       ]
+    },
+    {
+      "message": {
+        "text": "the prime treetable works fine, but it seems like I need to create my own custom treetable. I need finer control to each row",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 124
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 125
+            },
+            "text": "the prime treetable works fine, but it seems like I need to create my own custom treetable. I need finer control to each row",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "If you need finer control over each row in the `TreeTable`, you can use the `body` prop of the `Column` component to provide a template for the cells in the column. The `body` prop should be a function that takes the row data as an argument and returns a JSX element.\n\nHere's an example of how you can use the `body` prop to customize the cells in the \"Test Case / Parameter\" column:\n\n```jsx\nimport React from 'react';\nimport { TreeTable } from 'primereact/treetable';\nimport { Column } from 'primereact/column';\n\nfunction TestDisplay({ tests }) {\n  const actionBodyTemplate = (node) => {\n    // You can access the row data through the `node` argument\n    const { name, expected, measured, description } = node.data;\n\n    // Return a JSX element that represents the cell\n    return (\n      <div>\n        <strong>{name}</strong>\n        <p>Expected: {expected}</p>\n        <p>Measured: {measured}</p>\n        <p>Description: {description}</p>\n      </div>\n    );\n  };\n\n  return (\n    <div className=\"card\">\n      <TreeTable value={tests}>\n        <Column field=\"name\" body={actionBodyTemplate} header=\"Test Case / Parameter\" expander />\n        <Column field=\"expected\" header=\"Expected\" />\n        <Column field=\"measured\" header=\"Measured\" />\n        <Column field=\"description\" header=\"Description\" />\n      </TreeTable>\n    </div>\n  );\n}\n\nexport default TestDisplay;\n```\n\nIn this code, `actionBodyTemplate` is a function that takes a node object as an argument and returns a JSX element that represents the cell in the \"Test Case / Parameter\" column. The node object has a `data` property that contains the row data. You can access the `name`, `expected`, `measured`, and `description` properties of the row data through the `node.data` object. Then, you can use these properties to create a JSX element that represents the cell. Finally, you pass `actionBodyTemplate` as the `body` prop to the `Column` component.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 3464,
+          "totalElapsed": 31480
+        },
+        "metadata": {
+          "responseId": "b71aeaa3-4001-462f-a3c3-785aad030892"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I customize the styling of individual rows in a TreeTable component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 96,
+              "startColumn": 1,
+              "endLineNumber": 112,
+              "endColumn": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "I am not going to use prime TreeTable, that is the decision. Let's make a custom component for my Test Display",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 110
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 111
+            },
+            "text": "I am not going to use prime TreeTable, that is the decision. Let's make a custom component for my Test Display",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Alright, let's create a custom `TestDisplay` component using React. We'll use recursion to render the nested data structure. Here's a basic example:\n\n```jsx\nimport React from 'react';\n\nfunction TestRow({ test, level = 0 }) {\n  return (\n    <React.Fragment>\n      <tr>\n        <td style={{ paddingLeft: `${level * 20}px` }}>{test.name}</td>\n        <td>{test.expected}</td>\n        <td>{test.measured}</td>\n        <td>{test.description}</td>\n      </tr>\n      {test.children && test.children.map(child => (\n        <TestRow key={child.name} test={child} level={level + 1} />\n      ))}\n    </React.Fragment>\n  );\n}\n\nfunction TestDisplay({ tests }) {\n  return (\n    <table>\n      <thead>\n        <tr>\n          <th>Test Case / Parameter</th>\n          <th>Expected</th>\n          <th>Measured</th>\n          <th>Description</th>\n        </tr>\n      </thead>\n      <tbody>\n        {tests.map(test => (\n          <TestRow key={test.name} test={test} />\n        ))}\n      </tbody>\n    </table>\n  );\n}\n\nexport default TestDisplay;\n```\n\nIn this code, `TestRow` is a component that renders a row for a test and its children. It takes a `test` prop that is an object with `name`, `expected`, `measured`, `description`, and `children` properties. The `children` property is an array of child tests. It also takes a `level` prop that is a number representing the nesting level of the test. It uses the `level` prop to set the left padding of the test name cell. It uses recursion to render the child tests.\n\n`TestDisplay` is a component that renders a table with a row for each test in the `tests` prop. The `tests` prop is an array of test objects. It uses the `TestRow` component to render the rows.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2197,
+          "totalElapsed": 24533
+        },
+        "metadata": {
+          "responseId": "47a7f7a1-ca45-4213-95d7-b27906d39e41"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I add expand/collapse functionality to the custom TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 82,
+              "startColumn": 1,
+              "endLineNumber": 112,
+              "endColumn": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "ok, how to use it ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 18
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 19
+            },
+            "text": "ok, how to use it ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To use the `TestDisplay` component, you need to import it in the parent component and pass the `tests` prop to it. The `tests` prop should be an array of test objects. Each test object should have a `name`, `expected`, `measured`, `description`, and `children` property. The `children` property should be an array of child test objects.\n\nHere's an example of how you can use the `TestDisplay` component:\n\n```jsx\nimport React from 'react';\nimport TestDisplay from './TestDisplay';\n\nfunction App() {\n  const tests = [\n    {\n      name: 'Test 1',\n      expected: 'Expected 1',\n      measured: 'Measured 1',\n      description: 'Description 1',\n      children: [\n        {\n          name: 'Test 1.1',\n          expected: 'Expected 1.1',\n          measured: 'Measured 1.1',\n          description: 'Description 1.1',\n        },\n        {\n          name: 'Test 1.2',\n          expected: 'Expected 1.2',\n          measured: 'Measured 1.2',\n          description: 'Description 1.2',\n        },\n      ],\n    },\n    {\n      name: 'Test 2',\n      expected: 'Expected 2',\n      measured: 'Measured 2',\n      description: 'Description 2',\n    },\n  ];\n\n  return (\n    <div className=\"App\">\n      <TestDisplay tests={tests} />\n    </div>\n  );\n}\n\nexport default App;\n```\n\nIn this code, `App` is a component that renders a `TestDisplay` component with some dummy data. The `tests` array contains two test objects. The first test object has a `children` property that is an array of child test objects. The `TestDisplay` component will render a table with a row for each test and its children.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2300,
+          "totalElapsed": 19187
+        },
+        "metadata": {
+          "responseId": "5db8d7b9-4083-45d0-bdcb-f6841b18f77f"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I pass additional props to the `TestRow` component in the `TestDisplay` component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 24,
+              "startColumn": 1,
+              "endLineNumber": 39,
+              "endColumn": 28
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "ok, seems like the basic works. Now I need to add collapse/expand functionality for test case row",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 97
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 98
+            },
+            "text": "ok, seems like the basic works. Now I need to add collapse/expand functionality for test case row",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To add collapse/expand functionality, we can add a piece of state to the `TestRow` component to keep track of whether it's expanded or not. We can then use this state to conditionally render the child rows. Here's how you can do it:\n\n```jsx\nimport React, { useState } from 'react';\n\nfunction TestRow({ test, level = 0 }) {\n  const [isExpanded, setIsExpanded] = useState(false);\n\n  const handleToggle = () => {\n    setIsExpanded(!isExpanded);\n  };\n\n  return (\n    <React.Fragment>\n      <tr onClick={handleToggle}>\n        <td style={{ paddingLeft: `${level * 20}px` }}>\n          {isExpanded ? '-' : '+'} {test.name}\n        </td>\n        <td>{test.expected}</td>\n        <td>{test.measured}</td>\n        <td>{test.description}</td>\n      </tr>\n      {isExpanded && test.children && test.children.map(child => (\n        <TestRow key={child.name} test={child} level={level + 1} />\n      ))}\n    </React.Fragment>\n  );\n}\n\nfunction TestDisplay({ tests }) {\n  return (\n    <table>\n      <thead>\n        <tr>\n          <th>Test Case / Parameter</th>\n          <th>Expected</th>\n          <th>Measured</th>\n          <th>Description</th>\n        </tr>\n      </thead>\n      <tbody>\n        {tests.map(test => (\n          <TestRow key={test.name} test={test} />\n        ))}\n      </tbody>\n    </table>\n  );\n}\n\nexport default TestDisplay;\n```\n\nIn this code, `isExpanded` is a piece of state that represents whether the `TestRow` is expanded or not. `setIsExpanded` is the setter function for `isExpanded`. `handleToggle` is a function that toggles the value of `isExpanded` when the row is clicked. The child rows are conditionally rendered based on the value of `isExpanded`. The `-` or `+` sign is displayed next to the test name based on the value of `isExpanded`.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2539,
+          "totalElapsed": 33065
+        },
+        "metadata": {
+          "responseId": "516a1271-26db-45f1-9b17-f057c7604d61"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I customize the styling of the expand/collapse icons in the TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\dummy_data.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/dummy_data.jsx",
+              "path": "/f:/Project/python/framework3_ui/dummy_data.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 151,
+              "startColumn": 1,
+              "endLineNumber": 178,
+              "endColumn": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "ok, it worked. Can you show the grid of the table? There seems to be some misalignment of the text, having the grid will help",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 125
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 126
+            },
+            "text": "ok, it worked. Can you show the grid of the table? There seems to be some misalignment of the text, having the grid will help",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Sure, you can add some CSS to display a grid on the table. Here's how you can do it:\n\n```jsx\nimport React, { useState } from 'react';\nimport './TestDisplay.css'; // Import the CSS file\n\nfunction TestRow({ test, level = 0 }) {\n  // ... existing code ...\n}\n\nfunction TestDisplay({ tests }) {\n  return (\n    <table className=\"test-table\"> {/* Add the CSS class to the table */}\n      {/* ... existing code ... */}\n    </table>\n  );\n}\n\nexport default TestDisplay;\n```\n\nThen, create a new CSS file named `TestDisplay.css` in the same directory as `TestDisplay.jsx` and add the following CSS:\n\n```css\n.test-table {\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.test-table th, .test-table td {\n  border: 1px solid #ddd;\n  padding: 8px;\n}\n\n.test-table tr:nth-child(even) {\n  background-color: #f2f2f2;\n}\n\n.test-table tr:hover {\n  background-color: #ddd;\n}\n\n.test-table th {\n  padding-top: 12px;\n  padding-bottom: 12px;\n  text-align: left;\n  background-color: #4CAF50;\n  color: white;\n}\n```\n\nThis CSS will add a grid to the table, add padding to the cells, and add some hover and striping effects to the rows.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2621,
+          "totalElapsed": 18593
+        },
+        "metadata": {
+          "responseId": "2cb1d640-6788-462d-b2d8-d93daf757dcb"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I customize the styling of the expand/collapse icons in the TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 20,
+              "startColumn": 1,
+              "endLineNumber": 47,
+              "endColumn": 28
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "looks good",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "text": "looks good",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Great! If you have any other questions or need further assistance, feel free to ask. Happy coding!",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2162,
+          "totalElapsed": 2585
+        },
+        "metadata": {
+          "responseId": "0cb4099f-1f86-4c6b-b9f9-5c0b1444c906"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I add sorting functionality to the custom TreeTable component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "Correct me if I am wrong. For this component to work, the \"tests\" data need to update as whole. For example, if one parameter changes  for one test, the backend still need to send the whole tests data array to the UI",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 216
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 217
+            },
+            "text": "Correct me if I am wrong. For this component to work, the \"tests\" data need to update as whole. For example, if one parameter changes  for one test, the backend still need to send the whole tests data array to the UI",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Yes, you're correct. The way this component is currently structured, it expects to receive the entire `tests` array as a prop each time it renders. If a single test's data changes, the entire `tests` array would need to be updated and passed to the `TestDisplay` component in order for the change to be reflected in the UI.\n\nThis is a common pattern in React, where the parent component holds the state and passes it down to child components as props. When the state changes, React's diffing algorithm efficiently updates only the parts of the DOM that need to change.\n\nHowever, if you find that passing the entire `tests` array is inefficient or causing performance issues, you might consider using a state management library like Redux or MobX, or the built-in Context API in React, which can allow more targeted updates to your state.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2260,
+          "totalElapsed": 8071
+        },
+        "metadata": {
+          "responseId": "5f61daf9-9057-409b-852e-516191404cd5"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I implement pagination for the TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "I want to update TestCase and Parameters individually. At my backend, Test Case has unique IDs, I was planning to use this ID to inform the UI which TestCase needs to be updated",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 177
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 178
+            },
+            "text": "I want to update TestCase and Parameters individually. At my backend, Test Case has unique IDs, I was planning to use this ID to inform the UI which TestCase needs to be updated",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To update individual `TestCase` or `Parameter`, you can use React's Context API to create a global state that can be accessed from any component. This way, you can update a specific `TestCase` or `Parameter` based on its ID.\n\nFirst, create a `TestContext`:\n\n```jsx\nimport React from 'react';\n\nexport const TestContext = React.createContext();\n```\n\nThen, create a `TestProvider` component that will hold the state and the function to update a test:\n\n```jsx\nimport React, { useState } from 'react';\nimport { TestContext } from './TestContext';\n\nexport function TestProvider({ children }) {\n  const [tests, setTests] = useState([]);\n\n  const updateTest = (id, updatedTest) => {\n    setTests(prevTests => prevTests.map(test => test.id === id ? updatedTest : test));\n  };\n\n  return (\n    <TestContext.Provider value={{ tests, updateTest }}>\n      {children}\n    </TestContext.Provider>\n  );\n}\n```\n\nIn your `TestDisplay` component, use the `TestContext` to access the `tests` and `updateTest`:\n\n```jsx\nimport React, { useContext } from 'react';\nimport { TestContext } from './TestContext';\nimport TestRow from './TestRow';\n\nfunction TestDisplay() {\n  const { tests } = useContext(TestContext);\n\n  return (\n    <table className=\"test-table\">\n      {/* ... existing code ... */}\n    </table>\n  );\n}\n\nexport default TestDisplay;\n```\n\nIn your `TestRow` component, use the `TestContext` to access `updateTest`:\n\n```jsx\nimport React, { useState, useContext } from 'react';\nimport { TestContext } from './TestContext';\n\nfunction TestRow({ test, level = 0 }) {\n  const { updateTest } = useContext(TestContext);\n  // ... existing code ...\n}\n\nexport default TestRow;\n```\n\nNow, you can call `updateTest(id, updatedTest)` from anywhere in your application to update a specific test. The `id` is the ID of the test to update, and `updatedTest` is the new test object. The `TestDisplay` component will automatically re-render when a test is updated.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 3654,
+          "totalElapsed": 23660
+        },
+        "metadata": {
+          "responseId": "d006ac70-ac22-4e0c-a29f-49446113788c"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access the `tests` and `updateTest` functions in my component using the `TestContext`?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "I see, you still need to iterate through all the tests to see which one matches the id from the backend'",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 104
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 105
+            },
+            "text": "I see, you still need to iterate through all the tests to see which one matches the id from the backend'",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Yes, that's correct. In order to find the test that needs to be updated, you would need to iterate over the `tests` array and match the `id` of each test with the `id` from the backend. This is because the `tests` array is an unordered collection of tests, and there's no direct way to access a specific test without knowing its index in the array.\n\nHowever, if you find that iterating over the `tests` array is inefficient, especially if the array is large, you could consider using a different data structure to store the tests. For example, you could use an object where the keys are the test IDs. This would allow you to access and update a specific test in constant time.\n\nHere's an example of what the `updateTest` function might look like with this approach:\n\n```jsx\nconst updateTest = (id, updatedTest) => {\n  setTests(prevTests => ({ ...prevTests, [id]: updatedTest }));\n};\n```\n\nAnd here's how you might use the `tests` object in your `TestDisplay` component:\n\n```jsx\nfunction TestDisplay() {\n  const { tests } = useContext(TestContext);\n\n  return (\n    <table className=\"test-table\">\n      {/* ... existing code ... */}\n      <tbody>\n        {Object.values(tests).map(test => (\n          <TestRow key={test.id} test={test} />\n        ))}\n      </tbody>\n    </table>\n  );\n}\n```\n\nIn this code, `Object.values(tests)` returns an array of the test objects, which can then be mapped to `TestRow` components.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2197,
+          "totalElapsed": 14505
+        },
+        "metadata": {
+          "responseId": "ae45fe8e-e6b9-49c2-b06e-19ae51d50163"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I handle updates to individual test cases or parameters efficiently without iterating over the entire tests array?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "Could you rewrite the whole thing with this new data structure?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 63
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 64
+            },
+            "text": "Could you rewrite the whole thing with this new data structure?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Sure, here's how you can rewrite the `TestDisplay` and `TestRow` components to use an object to store the tests instead of an array:\n\n```jsx\nimport React, { useState, useContext } from 'react';\nimport '../style/TestDisplay.css';\nimport { TestContext } from './TestContext';\n\nfunction TestRow({ test, level = 0 }) {\n  const [isExpanded, setIsExpanded] = useState(false);\n  const { updateTest } = useContext(TestContext);\n\n  const handleToggle = () => {\n    setIsExpanded(!isExpanded);\n  };\n\n  return (\n    <React.Fragment>\n      <tr onClick={handleToggle}>\n        <td style={{ paddingLeft: `${level * 20}px` }}>\n          {isExpanded ? '-' : '+'} {test.name}\n        </td>\n        <td>{test.expected}</td>\n        <td>{test.measured}</td>\n        <td>{test.description}</td>\n      </tr>\n      {isExpanded && test.children && Object.values(test.children).map(child => (\n        <TestRow key={child.id} test={child} level={level + 1} />\n      ))}\n    </React.Fragment>\n  );\n}\n\nfunction TestDisplay() {\n  const { tests } = useContext(TestContext);\n\n  return (\n    <table className=\"test-table\">\n      <thead>\n        <tr>\n          <th>Test Case / Parameter</th>\n          <th>Expected</th>\n          <th>Measured</th>\n          <th>Description</th>\n        </tr>\n      </thead>\n      <tbody>\n        {Object.values(tests).map(test => (\n          <TestRow key={test.id} test={test} />\n        ))}\n      </tbody>\n    </table>\n  );\n}\n\nexport default TestDisplay;\n```\n\nIn this code, `tests` is an object where the keys are the test IDs and the values are the test objects. `Object.values(tests)` is used to get an array of the test objects, which can then be mapped to `TestRow` components. Similarly, `Object.values(test.children)` is used to get an array of the child test objects. The `updateTest` function from the `TestContext` is used to update a specific test.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 3125,
+          "totalElapsed": 19831
+        },
+        "metadata": {
+          "responseId": "78cb1513-a5f9-406c-a1c1-bfa0d80c3e1b"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access the updated test data in a component outside of the TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "and the context provider?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 25
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 26
+            },
+            "text": "and the context provider?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Sure, here's how you can create the `TestContext` and `TestProvider`:\n\n```jsx\nimport React, { useState } from 'react';\n\n// Create the context\nexport const TestContext = React.createContext();\n\n// Create the provider\nexport function TestProvider({ children }) {\n  const [tests, setTests] = useState({});\n\n  const updateTest = (id, updatedTest) => {\n    setTests(prevTests => ({ ...prevTests, [id]: updatedTest }));\n  };\n\n  return (\n    <TestContext.Provider value={{ tests, updateTest }}>\n      {children}\n    </TestContext.Provider>\n  );\n}\n```\n\nIn this code, `tests` is an object where the keys are the test IDs and the values are the test objects. The `updateTest` function updates a specific test in the `tests` object. The `TestProvider` component provides the `tests` object and the `updateTest` function to all components in the component tree via the `TestContext`.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2958,
+          "totalElapsed": 10100
+        },
+        "metadata": {
+          "responseId": "b991d4e5-4233-409a-a9a1-95b523672857"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access and update a specific test using the `TestContext` in my React application?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "can you show me how I would invoke the updateTest function?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 59
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 60
+            },
+            "text": "can you show me how I would invoke the updateTest function?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Sure, you can invoke the `updateTest` function from the `TestContext` inside any component that is a child of `TestProvider`. Here's an example of how you might do this in the `TestRow` component:\n\n```jsx\nimport React, { useState, useContext } from 'react';\nimport { TestContext } from './TestContext';\n\nfunction TestRow({ test, level = 0 }) {\n  const [isExpanded, setIsExpanded] = useState(false);\n  const { updateTest } = useContext(TestContext);\n\n  const handleToggle = () => {\n    setIsExpanded(!isExpanded);\n  };\n\n  const handleUpdate = () => {\n    const updatedTest = { ...test, measured: 'new value' };\n    updateTest(test.id, updatedTest);\n  };\n\n  return (\n    <React.Fragment>\n      <tr onClick={handleToggle}>\n        {/* ... existing code ... */}\n      </tr>\n      <button onClick={handleUpdate}>Update Test</button>\n      {isExpanded && test.children && Object.values(test.children).map(child => (\n        <TestRow key={child.id} test={child} level={level + 1} />\n      ))}\n    </React.Fragment>\n  );\n}\n\nexport default TestRow;\n```\n\nIn this code, the `handleUpdate` function creates a new test object with the updated value and calls `updateTest` with the test's ID and the new test object. The `Update Test` button calls `handleUpdate` when clicked. This will update the test's `measured` value to `'new value'`. You can replace `'new value'` with the actual new value you want to set.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1903,
+          "totalElapsed": 16386
+        },
+        "metadata": {
+          "responseId": "f9827414-6da0-464c-aa52-60d4a372197a"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access the updated test data in a component outside of the TestDisplay component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\components\\TestDisplay.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/components/TestDisplay.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 29,
+              "endColumn": 11
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "hmm, the UI will receive data from websocket, which I have also wrapped inside a context provider. I thought I would invoke updateTest function right after varifying the date WS data",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 182
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 183
+            },
+            "text": "hmm, the UI will receive data from websocket, which I have also wrapped inside a context provider. I thought I would invoke updateTest function right after varifying the date WS data",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "That's a great idea! You can indeed call the `updateTest` function right after receiving and verifying the data from the WebSocket. \n\nAssuming you have a `WebSocketContext` that provides a `data` object (the data received from the WebSocket), you can use both the `WebSocketContext` and `TestContext` in your `App` component to update the tests when the WebSocket data changes.\n\nHere's an example of how you might do this:\n\n```jsx\nimport React, { useContext, useEffect } from 'react';\nimport { WebSocketContext } from './store/ws-provider';\nimport { TestContext } from './TestContext';\nimport TestDisplay from './TestDisplay';\n\nfunction App() {\n  const { data } = useContext(WebSocketContext);\n  const { updateTest } = useContext(TestContext);\n\n  useEffect(() => {\n    if (data && data.testId && data.updatedTest) {\n      updateTest(data.testId, data.updatedTest);\n    }\n  }, [data, updateTest]);\n\n  return <TestDisplay />;\n}\n\nexport default App;\n```\n\nIn this code, the `useEffect` hook is used to call `updateTest` whenever the `data` from the WebSocket changes. The `data` object is expected to have a `testId` property (the ID of the test to update) and an `updatedTest` property (the new test object). If these properties exist, `updateTest` is called with `data.testId` and `data.updatedTest`.\n\nPlease replace `data.testId` and `data.updatedTest` with the actual properties in your WebSocket data.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2271,
+          "totalElapsed": 16341
+        },
+        "metadata": {
+          "responseId": "b0a525c8-33c4-4bba-a297-9b05113591f7"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access the updated test data in a component after calling the `updateTest` function?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\index.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/index.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/index.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 14,
+              "endColumn": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "can you provide a dummy data for test",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 37
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 38
+            },
+            "text": "can you provide a dummy data for test",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Sure, here's an example of how you might structure your dummy test data as an object with test IDs as keys:\n\n```javascript\nconst dummy_tests = {\n  '1': {\n    id: '1',\n    name: 'Test 1',\n    expected: 'Expected 1',\n    measured: 'Measured 1',\n    description: 'Description 1',\n    children: {\n      '1.1': {\n        id: '1.1',\n        name: 'Test 1.1',\n        expected: 'Expected 1.1',\n        measured: 'Measured 1.1',\n        description: 'Description 1.1',\n      },\n      '1.2': {\n        id: '1.2',\n        name: 'Test 1.2',\n        expected: 'Expected 1.2',\n        measured: 'Measured 1.2',\n        description: 'Description 1.2',\n      },\n    },\n  },\n  // ... more tests ...\n};\n```\n\nIn this code, each test is an object with properties `id`, `name`, `expected`, `measured`, `description`, and `children`. The `children` property is an object with child test IDs as keys and child test objects as values. Each child test object has the same structure as the parent test object.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 3701,
+          "totalElapsed": 17040
+        },
+        "metadata": {
+          "responseId": "7c8ee00c-ed14-429f-901e-afd99e17daae"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "copilot",
+          "message": "How can I access the updated test data in a component that is not a direct child of the TestProvider?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": false,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        }
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\dummy_data.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/dummy_data.jsx",
+              "path": "/f:/Project/python/framework3_ui/dummy_data.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 11,
+              "startColumn": 1,
+              "endLineNumber": 38,
+              "endColumn": 34
+            }
+          }
+        }
+      ]
+    },
+    {
+      "message": {
+        "text": "@workspace /explain Write an explanation for the active selection as paragraphs of text.\n\n```javascriptreact\nsetTests((prevTests) => ({ ...prevTests, [id]: updatedTest }));\n```\n\n",
+        "parts": [
+          {
+            "kind": "agent",
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "id": "workspace",
+              "metadata": {
+                "description": "Ask about your workspace",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasSlashCommands": true,
+                "hasFollowups": true,
+                "isSecondary": true,
+                "sampleRequest": "How do I build this project?",
+                "supportIssueReporting": false
+              }
+            }
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the selected code works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 178
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 7,
+              "endColumn": 1
+            },
+            "text": " Write an explanation for the active selection as paragraphs of text.\n\n```javascriptreact\nsetTests((prevTests) => ({ ...prevTests, [id]: updatedTest }));\n```\n\n",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "This line of code is using the [`setTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22setTests%22%5D \"src/store/test-display-context-provider.jsx\") function to update the state of [`tests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22tests%22%5D \"src/store/test-display-context-provider.jsx\"). [`setTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22setTests%22%5D \"src/store/test-display-context-provider.jsx\") is a function provided by the `useState` hook in React, which is used to create state variables.\n\nThe [`setTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22setTests%22%5D \"src/store/test-display-context-provider.jsx\") function is being called with a function as its argument. This function takes the previous state ([`prevTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22prevTests%22%5D \"src/store/test-display-context-provider.jsx\")) as its parameter and returns a new state.\n\nThe new state is created by making a copy of [`prevTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22prevTests%22%5D \"src/store/test-display-context-provider.jsx\") using the spread operator ([`...prevTests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22...prevTests%22%5D \"src/store/test-display-context-provider.jsx\")). This ensures that changes to the new state do not affect the old state, which is a key principle in React state management.\n\nThen, the code `[id]: updatedTest` is used to add a new property to the copied object or update an existing property. The property key is the value of `id`, and the property value is `updatedTest`. This is how a specific test is updated in the [`tests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22tests%22%5D \"src/store/test-display-context-provider.jsx\") object.\n\nSo, in summary, this line of code is updating the [`tests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22tests%22%5D \"src/store/test-display-context-provider.jsx\") state by creating a new object that has all the properties of the old [`tests`](command:_github.copilot.openSymbolInFile?%5B%22src%2Fstore%2Ftest-display-context-provider.jsx%22%2C%22tests%22%5D \"src/store/test-display-context-provider.jsx\") object, plus an updated test object with a key of `id`.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 8523,
+          "totalElapsed": 18069
+        },
+        "metadata": {
+          "responseId": "e588aefa-d2f8-48d3-938f-3dabc58aea98"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "workspace",
+          "subCommand": "explain",
+          "message": "How can I access the updated test data in a different component?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "workspace",
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "metadata": {
+          "description": "Ask about your workspace",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isSecondary": true,
+          "sampleRequest": "How do I build this project?",
+          "supportIssueReporting": false
+        }
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the selected code works"
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "f:\\Project\\python\\framework3_ui\\src\\store\\test-display-context-provider.jsx",
+              "_sep": 1,
+              "external": "file:///f%3A/Project/python/framework3_ui/src/store/test-display-context-provider.jsx",
+              "path": "/f:/Project/python/framework3_ui/src/store/test-display-context-provider.jsx",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 5,
+              "endLineNumber": 15,
+              "endColumn": 68
+            }
+          }
+        }
+      ]
     }
   ],
   "providerId": "copilot"

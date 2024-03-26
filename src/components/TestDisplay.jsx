@@ -1,17 +1,38 @@
-import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import WebSocketContext from "../store/ws-context";
-import { TreeTable } from "primereact/treetable";
-import { Column } from "primereact/column";
-import { Button } from "primereact/button";
-import { ProgressBar } from "primereact/progressbar";
-import "primeicons/primeicons.css";
 import "../style/TestDisplay.css";
-import { dummy_test_data } from "../../dummy_data";
+import { TestDisplayContext } from "../store/test-display-context-provider";
 
-function TestDisplay({}) {
-  const { ws, _ } = useContext(WebSocketContext);
-  const [tcData, setTcData] = useState([]);
+function TestRow({ test, level = 0 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { updateTest } = useContext(TestDisplayContext);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <>
+      <tr onClick={handleToggle}>
+        <td style={{ paddingLeft: `${level * 20}px` }}>
+          {isExpanded ? "-" : "+"} {test.name}
+        </td>
+        <td>{test.expected}</td>
+        <td>{test.measured}</td>
+        <td>{test.description}</td>
+      </tr>
+      {isExpanded &&
+        test.parameters &&
+        Object.values(test.parameters).map((parameter) => (
+          <TestRow key={parameter.id} test={parameter} level={level + 1} />
+        ))}
+    </>
+  );
+}
+
+function TestDisplay() {
+  const { ws } = useContext(WebSocketContext);
+  const { tests } = useContext(TestDisplayContext);
 
   useEffect(() => {
     if (!ws) {
@@ -19,8 +40,8 @@ function TestDisplay({}) {
     }
     const handleMessage = (event) => {
       const data = JSON.parse(event.data);
-      if (data.type == "tcData") {
-        setTcData(data.message);
+      if (data.type === "tcData") {
+        console.log(data.message);
       }
     };
 
@@ -31,80 +52,22 @@ function TestDisplay({}) {
     };
   }, [ws]);
 
-  // useEffect(() => {
-  //   setTcData(dummy_test_data);
-  // }, []);
-
-  const actionBodyTemplate = (rowData) => {
-    const reTest = () => {
-      console.log(`Re-testing ${rowData.key}`);
-    };
-    const cancelTest = () => {
-      console.log(`Canceling ${rowData.key}`);
-    };
-    if (rowData.hasOwnProperty("key")) {
-      return (
-        <>
-          {rowData.data.name}
-          {!rowData.data.status && rowData.data.hasOwnProperty("status") && (
-            <Button
-              icon="pi pi-refresh"
-              className="green-icon white-background"
-              onClick={reTest}
-            ></Button>
-          )}
-          {rowData.data.hasOwnProperty("status") && (
-            <Button
-              icon="pi pi-times"
-              className="red-icon white-background"
-              onClick={cancelTest}
-            ></Button>
-          )}
-        </>
-      );
-    }
-  };
-
-  const nameBodyTemplate = (rowData) => {
-    return (
-      <>
-        {rowData.data.hasOwnProperty("progress") && (
-          <ProgressBar value={rowData.data.progress} showValue={true} />
-        )}
-      </>
-    );
-  };
-
-  const getRowClass = (rowData) => {
-    return {
-      "highlight-row":
-        !rowData.data.status && rowData.data.hasOwnProperty("status"),
-    };
-  };
-
   return (
-    <div className="test-display-container">
-      <TreeTable
-        value={tcData}
-        className="test-display-font-size"
-        rowClassName={getRowClass}
-      >
-        <Column
-          body={nameBodyTemplate}
-          header="Progress"
-          style={{ width: "10%" }}
-        ></Column>
-        <Column
-          field="name"
-          body={actionBodyTemplate}
-          header="Test Case / Parameter"
-          expander
-        ></Column>
-        <Column field="expected" header="Expected"></Column>
-        <Column field="measured" header="Measured"></Column>
-        <Column field="description" header="Description"></Column>
-      </TreeTable>
-    </div>
+    <table className="test-table">
+      <thead>
+        <tr>
+          <th>Test Case / Parameter</th>
+          <th>Expected</th>
+          <th>Measured</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.values(tests).map((test) => (
+          <TestRow key={test.id} test={test} />
+        ))}
+      </tbody>
+    </table>
   );
 }
 

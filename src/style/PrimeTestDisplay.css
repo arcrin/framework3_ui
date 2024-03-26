@@ -1,0 +1,43 @@
+.test-display-container {
+    overflow: auto;
+    max-width: 100%;
+    min-width: 2000px;
+}
+
+.green-icon .pi {
+    color: green;
+}
+
+.red-icon .pi {
+    color: red;
+    background-color: white;
+}
+
+.round-button {
+    border-radius: 50%;
+    width: 10px;
+    height: 30px;
+}
+
+.name-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.test-progress-bar {
+    width: 50%
+}
+
+.white-background {
+    background-color: white;
+    border-color: white;
+}
+
+.test-display-font-size {
+    font-size: 15px;
+}
+
+.highlight-row {
+    background-color: red;
+}

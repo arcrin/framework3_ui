@@ -19,6 +19,30 @@ const dummy_products = [
   },
 ];
 
+const dummy_tests = {
+  '1': {
+    id: '1',
+    name: 'Test 1',
+    parameters: {
+      '1.1': {
+        id: '1.1',
+        name: 'Test 1.1',
+        expected: 'Expected 1.1',
+        measured: 'Measured 1.1',
+        description: 'Description 1.1',
+      },
+      '1.2': {
+        id: '1.2',
+        name: 'Test 1.2',
+        expected: 'Expected 1.2',
+        measured: 'Measured 1.2',
+        description: 'Description 1.2',
+      },
+    },
+  },
+  // ... more tests ...
+};
+
 const dummy_test_data = [
   {
     key: "test1",
@@ -145,4 +169,4 @@ const dummy_test_data = [
     ],
   },
 ];
-export { dummy_products, dummy_test_data };
+export { dummy_products, dummy_test_data, dummy_tests };
